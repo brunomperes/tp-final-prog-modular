@@ -7,11 +7,14 @@ import com.j256.ormlite.table.TableUtils;
 
 import dao.ClienteDao;
 import entities.Cliente;
+import java.awt.Color;
+import ui.LoginTécnico;
+import ui.MenuInicial;
 
 public class Main {
 	
 	private static JdbcConnectionSource connectionSource;
-
+        
 	public static void main(String[] args) throws SQLException {
 		
 		// h2 by default but change to match your database
@@ -32,6 +35,9 @@ public class Main {
 
 		// destroy the data source which should close underlying connections
 		connectionSource.close();
+                
+                new MenuInicial().setVisible(true);
+        
 	}
 	
 	public static void createDbTables() throws SQLException{

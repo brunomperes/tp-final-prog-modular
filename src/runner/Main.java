@@ -33,6 +33,8 @@ public class Main {
 
 		// persist the account object to the database
 		clienteDao.create(account);
+		
+		//Client Sample Test <<MOISES>>
 
 		// destroy the data source which should close underlying connections
 		connectionSource.close();

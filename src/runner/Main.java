@@ -1,6 +1,7 @@
 package runner;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -34,7 +35,7 @@ public class Main {
 		createDbTables();
 
 		// create an instance of Account
-		Cliente account = new Cliente();
+		Cliente account = new Cliente("asdf", "124131324", new Date(), "3333-3333", "cliente@email.com");
 
 		// persist the account object to the database
 		clienteDao.create(account);

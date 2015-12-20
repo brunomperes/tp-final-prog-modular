@@ -9,6 +9,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import dao.ClienteDao;
+import dao.FuncionarioDao;
 import entities.Cliente;
 import entities.Funcionario;
 import entities.ItemOrcamento;
@@ -16,7 +17,9 @@ import entities.OrdemDeServico;
 
 public class Main {
 	
-	private static JdbcConnectionSource connectionSource;
+	public static JdbcConnectionSource connectionSource;
+	public static ClienteDao clienteDao;
+	public static FuncionarioDao funcionarioDao;
         
 	public static void main(String[] args) throws SQLException {
 		
@@ -26,7 +29,8 @@ public class Main {
 				databaseUrl);
 
 		// instantiate the dao with the connection source
-		ClienteDao clienteDao = new ClienteDao(connectionSource);
+		clienteDao = new ClienteDao(connectionSource);
+		funcionarioDao = new FuncionarioDao(connectionSource);
 		
 		createDbTables();
 

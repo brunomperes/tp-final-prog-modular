@@ -10,7 +10,7 @@ import dao.ClienteDao;
 @DatabaseTable(daoClass = ClienteDao.class)
 public class Cliente {
 
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField
 	private String nome;

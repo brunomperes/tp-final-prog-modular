@@ -1,6 +1,7 @@
 .settings/
 
 *.class
+bin/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -11,4 +12,9 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 /bin/
+=======
+/nbproject/private/
+/build/
+>>>>>>> branch 'master' of https://github.com/brunomperes/tp-final-prog-modular

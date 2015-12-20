@@ -4,6 +4,8 @@ import java.util.Date;
 import java.sql.SQLException;
 import java.util.Date;
 
+import ui.MenuInicial;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -19,7 +21,7 @@ import entities.OrdemDeServico;
 public class Main {
 	
 	private static JdbcConnectionSource connectionSource;
-
+        
 	public static void main(String[] args) throws SQLException {
 		
 		// h2 by default but change to match your database
@@ -65,9 +67,9 @@ public class Main {
 		funcionarioDao.create(valdeci);
 		
 		//OS Sample Test <<MOISES>>
-		OrdemDeServico os1 = new OrdemDeServico(moises,jorge,"Encanador","Reparo da Caixa D`agua",1,new Date());
+		OrdemDeServico os1 = new OrdemDeServico(moises,jorge,"Encanador","Reparo da Caixa D`agua",new Date());
 		ordemdeservicoDao.create(os1);
-		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado",1,new Date());
+		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado",new Date());
 		ordemdeservicoDao.create(os2);
 		
 		//Orcamento Sample Test <<MOISES>>
@@ -93,6 +95,9 @@ public class Main {
 		
 		// destroy the data source which should close underlying connections
 		connectionSource.close();
+                
+        new MenuInicial().setVisible(true);
+        
 	}
 	
 	public static void createDbTables() throws SQLException{

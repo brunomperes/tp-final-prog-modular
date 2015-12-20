@@ -15,7 +15,7 @@ public class OrdemDeServico {
 		CADASTRADA, AGUARDANDO_ORCAMENTO, AGUARDANDO_APROVACAO, APROVADA, EM_ANDAMENTO, CONCLUIDA, EM_COBRANCA, ENCERRADA, CANCELADA
 	}
 
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField(foreign = true)
 	private Cliente cliente;
@@ -35,12 +35,12 @@ public class OrdemDeServico {
 	}
 
 	public OrdemDeServico(Cliente cliente, Funcionario funcionario,
-			String especialidade, String descricao, int status, Date validade) {
+			String especialidade, String descricao, Date validade) {
 		this.cliente = cliente;
 		this.funcionario = funcionario;
 		this.especialidade = especialidade;
 		this.descricao = descricao;
-		this.status = status;
+		this.status = STATUS.CADASTRADA.ordinal();
 		this.validade = validade;
 	}
 

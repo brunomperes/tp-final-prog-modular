@@ -3,20 +3,16 @@ package runner;
 import java.sql.SQLException;
 import java.util.Date;
 
+import ui.MenuInicial;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import dao.ClienteDao;
 import entities.Cliente;
-<<<<<<< HEAD
-import java.awt.Color;
-import ui.LoginTécnico;
-import ui.MenuInicial;
-=======
 import entities.Funcionario;
 import entities.ItemOrcamento;
 import entities.OrdemDeServico;
->>>>>>> origin/master
 
 public class Main {
 	
@@ -45,7 +41,7 @@ public class Main {
 		// destroy the data source which should close underlying connections
 		connectionSource.close();
                 
-                new MenuInicial().setVisible(true);
+        new MenuInicial().setVisible(true);
         
 	}
 	

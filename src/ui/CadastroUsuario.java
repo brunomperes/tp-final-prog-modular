@@ -202,7 +202,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     	Cliente f = new Cliente(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), dataNascimento, jTextField5.getText(), jTextField6.getText());
         try {
 			Main.clienteDao.create(f);
-			JOptionPane.showMessageDialog(null, "Cadastro criado, sua matrícula é: " + f.getId());
+			JOptionPane.showMessageDialog(null, "Cadastro criado, sua matricula: " + f.getId());
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro ao criar seu login, tente novamente");
 			e.printStackTrace();

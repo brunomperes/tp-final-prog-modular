@@ -47,13 +47,13 @@ public class LoginUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("LOGAR COMO USUÁRIO");
+        jLabel1.setText("LOGAR COMO USUARIO");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setText("INSIRA SUA MATRÍCULA PARA LOGAR NO SISTEMA");
+        jLabel2.setText("INSIRA SUA MATRICULA PARA LOGAR NO SISTEMA");
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jTextField1.setText("MATRÍCULA.");
+        //jTextField1.setText("MATRICULA.");
 
         jButton1.setText("ENTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ public class LoginUsuario extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
         if (f == null){
-        	JOptionPane.showMessageDialog(null, "Matrícula não encontrada");
+        	JOptionPane.showMessageDialog(null, "Matricula NAO encontrada");
         } else {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
         	new MenuUsuario().setVisible(true);

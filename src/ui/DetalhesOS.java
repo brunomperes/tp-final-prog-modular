@@ -43,7 +43,7 @@ public class DetalhesOS extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("Detalhes Ordens De Serviços");
+        jLabel1.setText("Detalhes Ordens De Servico");
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -65,23 +65,23 @@ public class DetalhesOS extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Descrição do Item", "Valor Unitário", "Quantidade", "Valor Total"
+                "Descricao do Item", "Valor Unitário", "Quantidade", "Valor Total"
             }
         ));
         jTable1.setRowHeight(40);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton1.setText("Aprovar Orçamento");
+        jButton1.setText("Aprovar Orcamento");
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton2.setText("Aprovar Serviço");
+        jButton2.setText("Aprovar Servico");
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton3.setText("Efetuar Pagamento");
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton4.setText("Cancelar Ordem De Serviço");
+        jButton4.setText("Cancelar Ordem De Servico");
 
         jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton5.setText("VOLTAR");

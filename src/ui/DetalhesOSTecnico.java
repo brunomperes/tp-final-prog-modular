@@ -47,7 +47,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("Detalhes Ordens de Serviço");
+        jLabel1.setText("Detalhes Ordens de Servico");
 
         jButton1.setText("VOLTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -60,12 +60,12 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
 
         jTextField1.setText("Nome Cliente");
 
-        jLabel3.setText("DESCRIÇÃO:");
+        jLabel3.setText("DESCRICAO:");
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("DESCRIÇÃO DO CLIENTE");
+        jTextArea1.setText("DESCRICAO DO CLIENTE");
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -77,7 +77,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton3.setText("Iniciar Serviço");
+        jButton3.setText("Iniciar Servico");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -85,7 +85,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton4.setText("Concluir Serviço");
+        jButton4.setText("Concluir Servico");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -93,7 +93,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         });
 
         jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton5.setText("Elaborar Orçamento");
+        jButton5.setText("Elaborar Orcamento");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);

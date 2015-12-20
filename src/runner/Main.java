@@ -86,7 +86,7 @@ public class Main {
 		funcionarioDao.create(joao);
 		Funcionario altair = new Funcionario("Ailtair Ribeiro","111111","@altairribeiro", "Eletricista");
 		funcionarioDao.create(altair);
-		Funcionario valdeci = new Funcionario("Valdeci Silva","111111","@helton", "Mecanico");
+		Funcionario valdeci = new Funcionario("Valdeci Silva","111111","@valdeci", "Mecanico");
 		funcionarioDao.create(valdeci);
 		
 		//OS Sample Test <<MOISES>>

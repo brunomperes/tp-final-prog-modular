@@ -45,10 +45,10 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel1.setText("AGENDAMENTO DE ATENDIMENTO");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setText("Escolha uma opção para fazer o login");
+        jLabel2.setText("Escolha uma opcao para fazer o login");
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("LOGIN COMO USUÁRIO");
+        jButton1.setText("LOGIN COMO USUARIO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -56,7 +56,7 @@ public class MenuInicial extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setText("LOGIN COMO TÉCNICO");
+        jButton2.setText("LOGIN COMO TECNICO");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

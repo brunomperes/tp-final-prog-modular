@@ -51,7 +51,7 @@ public class MenuTecnico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("Ordens de Serviço");
+        jLabel1.setText("Ordens de Servico");
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,7 +71,7 @@ public class MenuTecnico extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Cliente", "Tipo de Manutenção", "Descrição"
+                "Cliente", "Tipo de Manutencao", "Descricao"
             }
         ));
         jTable1.setRowHeight(40);

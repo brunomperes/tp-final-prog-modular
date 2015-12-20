@@ -6,6 +6,13 @@
 package ui;
 
 import java.awt.Color;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+import entities.Funcionario;
+import entities.OrdemDeServico;
+import runner.Main;
 
 /**
  *
@@ -53,7 +60,7 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setText("Descrição do Problema (Max 300 caracteres).");
+        jLabel2.setText("Descricao do Servico (Max 300 caracteres).");
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -61,6 +68,11 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Cadastrar OS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("VOLTAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +142,18 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
         new MenuUsuario().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    	OrdemDeServico os = new OrdemDeServico();
+        try {
+			Main.ordemdeservicoDao.create(os);
+			//JOptionPane.showMessageDialog(null, "Cadastro criado, sua matricula: " + f.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        this.setVisible(false);
+        new LoginTecnico().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

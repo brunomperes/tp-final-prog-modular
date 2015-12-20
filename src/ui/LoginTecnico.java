@@ -47,12 +47,12 @@ public class LoginTecnico extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("LOGAR COMO TÉCNICO");
+        jLabel2.setText("LOGAR COMO TECNICO");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("INSIRA SUA MATRÍCULA PARA LOGAR NO SISTEMA");
+        jLabel1.setText("INSIRA SUA MATRICULA PARA LOGAR NO SISTEMA");
 
-        jTextField1.setText("MATRÍCULA");
+        //jTextField1.setText("MATRICULA");
 
         jButton1.setText("ENTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +136,7 @@ public class LoginTecnico extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
         if (f == null){
-        	JOptionPane.showMessageDialog(null, "Matrícula não encontrada");
+        	JOptionPane.showMessageDialog(null, "Matricula NAO encontrada");
         } else {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
         	//TODO entrar menu técnico

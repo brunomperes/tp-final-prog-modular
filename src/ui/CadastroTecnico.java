@@ -156,7 +156,7 @@ public class CadastroTecnico extends javax.swing.JFrame {
     	Funcionario f = new Funcionario(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText());
         try {
 			Main.funcionarioDao.create(f);
-			JOptionPane.showMessageDialog(null, "Cadastro criado, sua matrícula é: " + f.getId());
+			JOptionPane.showMessageDialog(null, "Cadastro criado, sua matricula: " + f.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -26,4 +26,12 @@ public class Cliente {
 	public Cliente(){
 		
 	}
+	
+	public Cliente(String nome, String rg, Date dataNascimento, String telefone, String email){
+		this.nome = nome;
+		this.rg = rg;
+		this.dataNascimento = dataNascimento;
+		this.telefone = telefone;
+		this.email = email;
+	}
 }

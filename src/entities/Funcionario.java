@@ -12,7 +12,7 @@ public class Funcionario {
 	public static final String ESP_PEDREIRO = "Pedreiro";
 	public static final String ESP_BOMBEIRO = "Bombeiro";
 	
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField
 	private String nome;
@@ -34,8 +34,6 @@ public class Funcionario {
 		this.email = email;
 		this.especialidade = especialidade;
 	}
-
-
 
 	public String getNome() {
 		return nome;

@@ -8,7 +8,7 @@ import dao.ItemOrcamentoDao;
 @DatabaseTable(daoClass = ItemOrcamentoDao.class)
 public class ItemOrcamento {
 	
-	@DatabaseField(id = true)
+	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField(foreign = true)
 	private OrdemDeServico ordemServico;

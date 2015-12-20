@@ -8,6 +8,10 @@ import dao.FuncionarioDao;
 @DatabaseTable(daoClass = FuncionarioDao.class)
 public class Funcionario {
 	
+	//	Lista de especialidades
+	public static final String ESP_PEDREIRO = "Pedreiro";
+	public static final String ESP_BOMBEIRO = "Bombeiro";
+	
 	@DatabaseField(id = true)
 	private int id;
 	@DatabaseField

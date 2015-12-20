@@ -153,13 +153,13 @@ public class CadastroTecnico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    	Funcionario f = new Funcionario();
+    	Funcionario f = new Funcionario(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText());
         try {
 			Main.funcionarioDao.create(f);
+			JOptionPane.showMessageDialog(null, "Cadastro criado, sua matrícula é: " + f.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-        JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
         this.setVisible(false);
         new LoginTecnico().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed

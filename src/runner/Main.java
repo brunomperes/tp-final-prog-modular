@@ -43,9 +43,16 @@ public class Main {
                 
         new MenuInicial().setVisible(true);
         
+	}
+	
+	public static void closeProgram(){
 		// destroy the data source which should close underlying connections
-		connectionSource.close();
-        
+        try {
+			connectionSource.close();
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+        System.exit(0);
 	}
 	
 	public static void createDbTables() throws SQLException{

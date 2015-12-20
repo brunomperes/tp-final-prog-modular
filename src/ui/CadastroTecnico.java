@@ -157,7 +157,6 @@ public class CadastroTecnico extends javax.swing.JFrame {
         try {
 			Main.funcionarioDao.create(f);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");

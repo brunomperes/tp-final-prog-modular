@@ -20,7 +20,7 @@ public class Main {
 				databaseUrl);
 
 		// instantiate the dao with the connection source
-		ClienteDao accountDao = new ClienteDao(connectionSource);
+		ClienteDao clienteDao = new ClienteDao(connectionSource);
 		
 		createDbTables();
 
@@ -28,7 +28,7 @@ public class Main {
 		Cliente account = new Cliente();
 
 		// persist the account object to the database
-		accountDao.create(account);
+		clienteDao.create(account);
 
 		// destroy the data source which should close underlying connections
 		connectionSource.close();

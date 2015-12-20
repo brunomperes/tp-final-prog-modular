@@ -17,6 +17,8 @@ public class Cliente {
 	@DatabaseField
 	private String rg;
 	@DatabaseField
+	private String cpf;
+	@DatabaseField
 	private Date dataNascimento;
 	@DatabaseField
 	private String telefone;

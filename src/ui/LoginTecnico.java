@@ -123,9 +123,13 @@ public class LoginTecnico extends javax.swing.JFrame {
         new CadastroTecnico().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-    	Funcionario f = null;
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        this.setVisible(false);
+        new MenuTecnico().setVisible(true);
+        
+        Funcionario f = null;
     	try {
     		f = Main.funcionarioDao.findByMatricula(Integer.parseInt(jTextField1.getText()));
 		} catch (Exception e) {
@@ -137,7 +141,8 @@ public class LoginTecnico extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
         	//TODO entrar menu técnico
         }
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
 
     /**
      * @param args the command line arguments

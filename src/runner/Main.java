@@ -1,5 +1,6 @@
 package runner;
 
+import java.util.Date;
 import java.sql.SQLException;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -34,7 +35,9 @@ public class Main {
 		clienteDao.create(account);
 		
 		//Client Sample Test <<MOISES>>
-
+		Cliente sample1 = new Cliente("BrunoPeres","111111",new Date(),"111111","@brunoperes");
+		clienteDao.create(sample1);
+		
 		// destroy the data source which should close underlying connections
 		connectionSource.close();
 	}

@@ -55,7 +55,37 @@ public class Main {
 		clienteDao.create(lais);
 		
 		//TECHNICIAN Sample Test <<MOISES>>
+		Funcionario jorge = new Funcionario("Jorge Mario","111111","@jorgemario", "Encanador");
+		funcionarioDao.create(jorge);
+		Funcionario joao = new Funcionario("Joao Nascimento","111111","@joaonascimento", "Pedreiro");
+		funcionarioDao.create(joao);
+		Funcionario altair = new Funcionario("Ailtair Ribeiro","111111","@altairribeiro", "Eletricista");
+		funcionarioDao.create(altair);
+		Funcionario valdeci = new Funcionario("Valdeci Silva","111111","@helton", "Mecanico");
+		funcionarioDao.create(valdeci);
 		
+		//OS Sample Test <<MOISES>>
+		OrdemDeServico os1 = new OrdemDeServico(moises,jorge,"Encanador","Reparo da Caixa D`agua",1,new Date());
+		ordemdeservicoDao.create(os1);
+		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado",1,new Date());
+		ordemdeservicoDao.create(os2);
+		
+		//Orcamento Sample Test <<MOISES>>
+		ItemOrcamento orcamentoOS1 = new ItemOrcamento (os1, 10,7,"Cano PVC",false);
+		itemorcamentoDao.create(orcamentoOS1);
+		orcamentoOS1 = new ItemOrcamento (os1, 5,2,"Fita Teflon",false);
+		itemorcamentoDao.create(orcamentoOS1);
+		orcamentoOS1 = new ItemOrcamento (os1, 10,4,"Mao de obra (R$/Hora)",false);
+		itemorcamentoDao.create(orcamentoOS1);
+		
+		ItemOrcamento orcamentoOS2 = new ItemOrcamento (os2, 30,2,"Telhas",false);
+		itemorcamentoDao.create(orcamentoOS2);
+		orcamentoOS2 = new ItemOrcamento (os2, 10,1,"Areia",false);
+		itemorcamentoDao.create(orcamentoOS2);
+		orcamentoOS2 = new ItemOrcamento (os2, 20,1,"Cimento",false);
+		itemorcamentoDao.create(orcamentoOS2);
+		orcamentoOS2 = new ItemOrcamento (os2, 20,5,"Mao de obra (R$/Hora",false);
+		itemorcamentoDao.create(orcamentoOS2);
 		//========================================
 		//END - SAMPLE DATA FOR TEST
 		//=======================================

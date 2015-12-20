@@ -7,6 +7,11 @@ package ui;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
+import runner.Main;
+import entities.Funcionario;
+
 /**
  *
  * @author ThiagoLucas
@@ -50,6 +55,11 @@ public class LoginTecnico extends javax.swing.JFrame {
         jTextField1.setText("MATRÍCULA");
 
         jButton1.setText("ENTRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("CADASTRAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +123,21 @@ public class LoginTecnico extends javax.swing.JFrame {
         new CadastroTecnico().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    	Funcionario f = null;
+    	try {
+    		f = Main.funcionarioDao.findByMatricula(Integer.parseInt(jTextField1.getText()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        if (f == null){
+        	JOptionPane.showMessageDialog(null, "Matrícula não encontrada");
+        } else {
+        	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
+        	//TODO entrar menu técnico
+        }
+    }
 
     /**
      * @param args the command line arguments

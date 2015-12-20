@@ -1,6 +1,5 @@
 package runner;
 
-import java.util.Date;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -20,7 +19,11 @@ import entities.OrdemDeServico;
 
 public class Main {
 	
-	private static JdbcConnectionSource connectionSource;
+	public static JdbcConnectionSource connectionSource;
+	public static ClienteDao clienteDao;
+	public static FuncionarioDao funcionarioDao;
+	public static OrdemDeServicoDao ordemdeservicoDao;
+	public static ItemOrcamentoDao itemorcamentoDao;
         
 	public static void main(String[] args) throws SQLException {
 		
@@ -29,20 +32,40 @@ public class Main {
 		connectionSource = new JdbcConnectionSource(
 				databaseUrl);
 
-		// instantiate the dao with the connection source
-		ClienteDao clienteDao = new ClienteDao(connectionSource);
-		FuncionarioDao funcionarioDao = new FuncionarioDao(connectionSource);
-		OrdemDeServicoDao ordemdeservicoDao = new OrdemDeServicoDao(connectionSource);
-		ItemOrcamentoDao itemorcamentoDao = new ItemOrcamentoDao(connectionSource);
+		clienteDao = new ClienteDao(connectionSource);
+		funcionarioDao = new FuncionarioDao(connectionSource);
+		ordemdeservicoDao = new OrdemDeServicoDao(connectionSource);
+		itemorcamentoDao = new ItemOrcamentoDao(connectionSource);
 		
 		createDbTables();
-
-		// create an instance of Account
-		Cliente account = new Cliente("asdf", "124131324", new Date(), "3333-3333", "cliente@email.com");
-
-		// persist the account object to the database
-		clienteDao.create(account);
 		
+		// instantiate the dao with the connection source
+		createMockData();
+                
+        new MenuInicial().setVisible(true);
+        
+	}
+	
+	public static void closeProgram(){
+		// destroy the data source which should close underlying connections
+        try {
+			connectionSource.close();
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+        System.exit(0);
+	}
+	
+	public static void createDbTables() throws SQLException{
+		
+		TableUtils.createTable(connectionSource, Cliente.class);
+		TableUtils.createTable(connectionSource, Funcionario.class);
+		TableUtils.createTable(connectionSource, ItemOrcamento.class);
+		TableUtils.createTable(connectionSource, OrdemDeServico.class);
+		
+	}
+	
+	public static void createMockData() throws SQLException{
 		//========================================
 		//BEGIN - SAMPLE DATA FOR TEST
 		//=======================================
@@ -91,22 +114,6 @@ public class Main {
 		//========================================
 		//END - SAMPLE DATA FOR TEST
 		//=======================================
-		
-		
-		// destroy the data source which should close underlying connections
-		connectionSource.close();
-                
-        new MenuInicial().setVisible(true);
-        
-	}
-	
-	public static void createDbTables() throws SQLException{
-		
-		TableUtils.createTable(connectionSource, Cliente.class);
-		TableUtils.createTable(connectionSource, Funcionario.class);
-		TableUtils.createTable(connectionSource, ItemOrcamento.class);
-		TableUtils.createTable(connectionSource, OrdemDeServico.class);
-		
 	}
 
 }

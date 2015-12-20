@@ -11,7 +11,7 @@ public class ItemOrcamento {
 	@DatabaseField(id = true)
 	private int id;
 	@DatabaseField(foreign = true)
-	private String orcamento;
+	private OrdemDeServico ordemServico;
 	@DatabaseField
 	private double valorUnitario;
 	@DatabaseField

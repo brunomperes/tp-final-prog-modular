@@ -7,6 +7,9 @@ import com.j256.ormlite.table.TableUtils;
 
 import dao.ClienteDao;
 import entities.Cliente;
+import entities.Funcionario;
+import entities.ItemOrcamento;
+import entities.OrdemDeServico;
 
 public class Main {
 	
@@ -37,6 +40,9 @@ public class Main {
 	public static void createDbTables() throws SQLException{
 		
 		TableUtils.createTable(connectionSource, Cliente.class);
+		TableUtils.createTable(connectionSource, Funcionario.class);
+		TableUtils.createTable(connectionSource, ItemOrcamento.class);
+		TableUtils.createTable(connectionSource, OrdemDeServico.class);
 		
 	}
 

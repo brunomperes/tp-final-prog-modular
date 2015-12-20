@@ -9,6 +9,11 @@ import dao.OrdemDeServicoDao;
 
 @DatabaseTable(daoClass = OrdemDeServicoDao.class)
 public class OrdemDeServico {
+	
+	//	Lista de status
+	public enum STATUS {
+		CADASTRADA, AGUARDANDO_ORCAMENTO, AGUARDANDO_APROVACAO, APROVADA, EM_ANDAMENTO, CONCLUIDA, EM_COBRANCA, ENCERRADA, CANCELADA
+	}
 
 	@DatabaseField(id = true)
 	private int id;

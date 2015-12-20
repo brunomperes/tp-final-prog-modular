@@ -32,14 +32,15 @@ public class Main {
 		connectionSource = new JdbcConnectionSource(
 				databaseUrl);
 
-		// instantiate the dao with the connection source
-
 		clienteDao = new ClienteDao(connectionSource);
 		funcionarioDao = new FuncionarioDao(connectionSource);
 		ordemdeservicoDao = new OrdemDeServicoDao(connectionSource);
 		itemorcamentoDao = new ItemOrcamentoDao(connectionSource);
 		
 		createDbTables();
+		
+		// instantiate the dao with the connection source
+		createMockData();
                 
         new MenuInicial().setVisible(true);
         

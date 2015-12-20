@@ -7,9 +7,15 @@ import com.j256.ormlite.table.TableUtils;
 
 import dao.ClienteDao;
 import entities.Cliente;
+<<<<<<< HEAD
 import java.awt.Color;
 import ui.LoginTécnico;
 import ui.MenuInicial;
+=======
+import entities.Funcionario;
+import entities.ItemOrcamento;
+import entities.OrdemDeServico;
+>>>>>>> origin/master
 
 public class Main {
 	
@@ -23,7 +29,7 @@ public class Main {
 				databaseUrl);
 
 		// instantiate the dao with the connection source
-		ClienteDao accountDao = new ClienteDao(connectionSource);
+		ClienteDao clienteDao = new ClienteDao(connectionSource);
 		
 		createDbTables();
 
@@ -31,7 +37,9 @@ public class Main {
 		Cliente account = new Cliente();
 
 		// persist the account object to the database
-		accountDao.create(account);
+		clienteDao.create(account);
+		
+		//Client Sample Test <<MOISES>>
 
 		// destroy the data source which should close underlying connections
 		connectionSource.close();
@@ -43,6 +51,9 @@ public class Main {
 	public static void createDbTables() throws SQLException{
 		
 		TableUtils.createTable(connectionSource, Cliente.class);
+		TableUtils.createTable(connectionSource, Funcionario.class);
+		TableUtils.createTable(connectionSource, ItemOrcamento.class);
+		TableUtils.createTable(connectionSource, OrdemDeServico.class);
 		
 	}
 

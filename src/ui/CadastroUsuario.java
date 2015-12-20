@@ -6,6 +6,17 @@
 package ui;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.swing.JOptionPane;
+
+import runner.Main;
+import entities.Cliente;
 
 /**
  *
@@ -56,20 +67,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel3.setText("Nome:");
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("CPF:");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("RG:");
@@ -184,20 +184,30 @@ public class CadastroUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
+    	this.setVisible(false);
         new LoginUsuario().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    	DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
+    	Date dataNascimento = null;
+		try {
+			dataNascimento = format.parse(jTextField4.getText());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+    	Cliente f = new Cliente(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), dataNascimento, jTextField5.getText(), jTextField6.getText());
+        try {
+			Main.clienteDao.create(f);
+			JOptionPane.showMessageDialog(null, "Cadastro criado, sua matrícula é: " + f.getId());
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro ao criar seu login, tente novamente");
+			e.printStackTrace();
+		}
+        
         this.setVisible(false);
         new LoginUsuario().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

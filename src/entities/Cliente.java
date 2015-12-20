@@ -29,12 +29,13 @@ public class Cliente {
 		
 	}
 	
-	public Cliente(String nome, String rg, Date dataNascimento, String telefone, String email){
+	public Cliente(String nome, String cpf, String rg, Date dataNascimento, String telefone, String email){
 		this.nome = nome;
 		this.rg = rg;
 		this.dataNascimento = dataNascimento;
 		this.telefone = telefone;
 		this.email = email;
+		this.cpf = cpf;
 	}
 	
 	public String getNome() {

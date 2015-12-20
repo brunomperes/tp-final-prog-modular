@@ -7,6 +7,12 @@ package ui;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
+import runner.Main;
+import entities.Cliente;
+import entities.Funcionario;
+
 /**
  *
  * @author ThiagoLucas
@@ -124,7 +130,18 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new MenuUsuario().setVisible(true);
+    	Cliente f = null;
+    	try {
+    		f = Main.clienteDao.findByMatricula(Integer.parseInt(jTextField1.getText()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        if (f == null){
+        	JOptionPane.showMessageDialog(null, "Matrícula não encontrada");
+        } else {
+        	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
+        	new MenuUsuario().setVisible(true);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

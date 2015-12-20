@@ -70,13 +70,13 @@ public class Main {
 		//BEGIN - SAMPLE DATA FOR TEST
 		//=======================================
 		//Client Sample Test <<MOISES>>
-		Cliente bruno = new Cliente("BrunoPeres","111111",new Date(),"111111","@brunoperes");
+		Cliente bruno = new Cliente("BrunoPeres","000000", "111111",new Date(),"111111","@brunoperes");
 		clienteDao.create(bruno);
-		Cliente moises = new Cliente("MoisePaje","222222",new Date(),"222222","@moisesrodrigues");
+		Cliente moises = new Cliente("MoisePaje","12312300", "222222",new Date(),"222222","@moisesrodrigues");
 		clienteDao.create(moises);
-		Cliente thiago = new Cliente("ThiagoSandi","333333",new Date(),"333333","@thiagosandi");
+		Cliente thiago = new Cliente("ThiagoSandi", "12312300", "333333",new Date(),"333333","@thiagosandi");
 		clienteDao.create(thiago);
-		Cliente lais = new Cliente("LaisMota","333333",new Date(),"333333","@laismota");
+		Cliente lais = new Cliente("LaisMota", "12312300", "333333",new Date(),"333333","@laismota");
 		clienteDao.create(lais);
 		
 		//TECHNICIAN Sample Test <<MOISES>>

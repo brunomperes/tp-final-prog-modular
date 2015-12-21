@@ -8,6 +8,8 @@ import dao.ItemOrcamentoDao;
 @DatabaseTable(daoClass = ItemOrcamentoDao.class)
 public class ItemOrcamento {
 	
+	public static final double PORCENTAGEM_IMPOSTO_SERVICO = 0.05;
+	
 	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField(foreign = true, foreignAutoRefresh = true)

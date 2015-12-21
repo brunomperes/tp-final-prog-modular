@@ -1,6 +1,7 @@
 package runner;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 
 import ui.MenuInicial;
@@ -122,11 +123,13 @@ public class Main {
 		funcionarioDao.create(valdeci);
 		
 		//OS Sample Test <<MOISES>>
-		OrdemDeServico os1 = new OrdemDeServico(moises,jorge,"Encanador","Reparo da Caixa D`agua",new Date());
+		Calendar cal = Calendar.getInstance(); 
+		cal.add(Calendar.MONTH, 1);
+		OrdemDeServico os1 = new OrdemDeServico(moises,jorge,"Encanador","Reparo da Caixa D`agua",cal.getTime());
 		ordemdeservicoDao.create(os1);
-		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado",new Date());
+		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado", cal.getTime());
 		ordemdeservicoDao.create(os2);
-		OrdemDeServico os3 = new OrdemDeServico(moises,"Bombeiro","Reparo da Caixa D`agua",new Date());
+		OrdemDeServico os3 = new OrdemDeServico(moises,"Bombeiro","Reparo da Caixa D`agua",cal.getTime());
 		ordemdeservicoDao.create(os3);
 		
 		//Orcamento Sample Test <<MOISES>>

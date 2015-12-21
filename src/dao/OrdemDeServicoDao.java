@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
@@ -41,8 +42,11 @@ public class OrdemDeServicoDao  extends BaseDaoImpl<OrdemDeServico, Integer> imp
 		return lista;
 	}
 	
-	public void invalidateExpiredOrcamentos(){
-		//TODO
+	public void invalidateExpiredOrcamentos() throws SQLException{
+		List<OrdemDeServico> lista = new ArrayList<OrdemDeServico>();
+		QueryBuilder<OrdemDeServico, Integer> qb = queryBuilder();
+		lista = qb.where().lt("validade", new Date()).query();
+		delete(lista);
 	}
 
 }

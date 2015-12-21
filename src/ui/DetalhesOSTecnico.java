@@ -261,7 +261,10 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     	os.setStatus(OrdemDeServico.STATUS.EM_COBRANCA.ordinal());
     	try {
 			Main.ordemdeservicoDao.update(os);
-			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para EM COBRANCA");
+			List<ItemOrcamento> listaItems = Main.itemOrcamentoDao.findAllItemsFromOS(os);
+			double valorImposto = OrdemDeServico.getValorImpostoNoOrcamento(listaItems);
+			double total = OrdemDeServico.getValorTotalOrcamento(listaItems);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para EM COBRANCA.\nValor total do orçamento: R$" + total + "\nDos quais o total de ISS e: R$" + valorImposto);
 			disableButtons();
 		} catch (SQLException e) {
 			e.printStackTrace();

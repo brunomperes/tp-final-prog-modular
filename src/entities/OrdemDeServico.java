@@ -1,6 +1,9 @@
 package entities;
 
 import java.util.Date;
+import java.util.List;
+
+import runner.Main;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -139,5 +142,29 @@ public class OrdemDeServico {
 		return id;
 	}
 	
+	public static double getValorImpostoNoOrcamento(List<ItemOrcamento> listaItems){
+		double valorImposto = 0;
+		for (ItemOrcamento itemOrcamento : listaItems) {
+			if (itemOrcamento.isGeraImposto()){
+				valorImposto += itemOrcamento.getValorTotal() * ItemOrcamento.PORCENTAGEM_IMPOSTO_SERVICO;
+			} 
+		}
+		return valorImposto;
+	}
+	
+	/**
+	 * Ja inclui imposto
+	 * @return
+	 */
+	public static double getValorTotalOrcamento(List<ItemOrcamento> listaItems){
+		double total = 0;
+		for (ItemOrcamento itemOrcamento : listaItems) {
+			total += itemOrcamento.getValorTotal();
+			if (itemOrcamento.isGeraImposto()){
+				total += itemOrcamento.getValorTotal() * ItemOrcamento.PORCENTAGEM_IMPOSTO_SERVICO;
+			} 
+		}
+		return total;
+	}
 	
 }

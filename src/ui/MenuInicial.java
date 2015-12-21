@@ -6,6 +6,7 @@
 package ui;
 
 import java.awt.Color;
+import java.sql.SQLException;
 
 import runner.Main;
 
@@ -22,6 +23,12 @@ public class MenuInicial extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
+        try {
+			Main.ordemdeservicoDao.invalidateExpiredOrcamentos();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**

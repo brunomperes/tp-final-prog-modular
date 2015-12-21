@@ -30,8 +30,10 @@ public class ItemOrcamentoDao extends BaseDaoImpl<ItemOrcamento, Integer> implem
 		return lista;
 	}
 	
-	public void invalidateExpiredOrcamentos(){
-		//TODO
+	public void createOrUpdateItems(List<ItemOrcamento> listaItems) throws SQLException{
+		for (ItemOrcamento itemOrcamento : listaItems) {
+			createOrUpdate(itemOrcamento);
+		}
 	}
 
 }

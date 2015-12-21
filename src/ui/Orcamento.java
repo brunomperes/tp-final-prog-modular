@@ -6,17 +6,38 @@
 package ui;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import runner.Main;
+import entities.ItemOrcamento;
+import entities.OrdemDeServico;
+import entities.OrdemDeServico.STATUS;
 
 /**
  *
  * @author ThiagoLucas
  */
 public class Orcamento extends javax.swing.JFrame {
+	
+	OrdemDeServico os = Main.getCurrentOS();
+	List<ItemOrcamento> listaItems;
+	Object listaItemsMatrix[][] = new Object[10][3];
 
     /**
      * Creates new form Orcamento
      */
     public Orcamento() {
+    	
+    	listaItems = Main.itemOrcamentoDao.findAllItemsFromOS(os);
+        for (int i = 0; i < listaItems.size(); i++) {
+        	listaItemsMatrix[i][0] = listaItems.get(i).getDescricao();
+        	listaItemsMatrix[i][1] = listaItems.get(i).getValorUnitario();
+        	listaItemsMatrix[i][2] = listaItems.get(i).getQuantidade();
+		}
+    	
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
@@ -43,28 +64,13 @@ public class Orcamento extends javax.swing.JFrame {
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
+        		listaItemsMatrix,
             new String [] {
                 "Item", "Valor", "Quantidade"
             }
         ));
         jTable1.setRowHeight(40);
+        jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -146,8 +152,50 @@ public class Orcamento extends javax.swing.JFrame {
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    	int initialItemsSize = listaItems.size();
+    	for (int i = 0; i < listaItemsMatrix.length; i++) {
+    		String desc = (String) jTable1.getValueAt(i, 0);
+    		Double valor;
+    		Double quant;
+    		
+    		try {
+    			// Caso ja seja um double
+    			valor = (Double) jTable1.getValueAt(i, 1);
+        		quant = (Double) jTable1.getValueAt(i, 2);
+			} catch (Exception e) {
+				//Caso seja String				
+				valor = Double.valueOf((String) jTable1.getModel().getValueAt(i, 1));
+				quant = Double.valueOf((String) jTable1.getModel().getValueAt(i, 1));
+			}
+
+    		if (desc == null && valor == null && quant == null){
+    			continue;
+    		}
+    		if (i < initialItemsSize){
+    			listaItems.get(i).setDescricao(desc);
+    			listaItems.get(i).setValorUnitario(valor);
+    			listaItems.get(i).setQuantidade(quant);
+    		} else {
+				ItemOrcamento item = new ItemOrcamento();
+				item.setDescricao(desc);
+				item.setValorUnitario(valor);
+				item.setQuantidade(quant);
+				item.setOrdemDeServico(os);
+				listaItems.add(item);
+			}
+		}
+    	try {
+    		Main.itemOrcamentoDao.createOrUpdateItems(listaItems);
+    		os.setStatus(STATUS.AGUARDANDO_APROVACAO.ordinal());
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "O orcamento foi enviado para aprovacao do cliente");
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar");
+			e.printStackTrace();
+		}
+    	
         this.setVisible(false);
-        new MenuTecnico().setVisible(true);
+        new DetalhesOSTecnico().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

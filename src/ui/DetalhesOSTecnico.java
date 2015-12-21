@@ -30,7 +30,6 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
-        System.out.println(os.getStatus());
     }
     
     public void disableButtons(){

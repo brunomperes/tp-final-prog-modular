@@ -31,7 +31,7 @@ public class DetalhesOS extends javax.swing.JFrame {
      */
     public DetalhesOS() {
     	os = Main.getCurrentOS();
-    	listaItemsOrcamento = Main.itemorcamentoDao.findAllItemsFromOS(os);
+    	listaItemsOrcamento = Main.itemOrcamentoDao.findAllItemsFromOS(os);
         
         for (int i = 0; i < listaItemsOrcamento.size(); i++) {
         	listaItemsMatrix[i][0] = listaItemsOrcamento.get(i).getDescricao();
@@ -43,6 +43,26 @@ public class DetalhesOS extends javax.swing.JFrame {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
+    }
+    
+    public void disableButtons(){
+    	jButton1.setEnabled(true);
+    	jButton2.setEnabled(true);
+    	jButton3.setEnabled(true);
+    	jButton4.setEnabled(true);
+    	
+    	if (!os.canGoTo(OrdemDeServico.STATUS.APROVADA)){
+        	jButton1.setEnabled(false);       	
+        }
+        if (!os.canGoTo(OrdemDeServico.STATUS.CONCLUIDA)){
+        	jButton2.setEnabled(false);       	
+        }
+        if (!os.canGoTo(OrdemDeServico.STATUS.ENCERRADA)){
+        	jButton3.setEnabled(false);       	
+        }
+        if (!os.canGoTo(OrdemDeServico.STATUS.CANCELADA)){
+        	jButton4.setEnabled(false);       	
+        }
     }
 
     /**
@@ -80,9 +100,6 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton1.setText("Aprovar Orcamento");
-        if (!os.canGoTo(OrdemDeServico.STATUS.APROVADA)){
-        	jButton1.setEnabled(false);       	
-        }
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -91,9 +108,6 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton2.setText("Aprovar Servico");
-        if (!os.canGoTo(OrdemDeServico.STATUS.CONCLUIDA)){
-        	jButton2.setEnabled(false);       	
-        }
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -102,9 +116,6 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton3.setText("Efetuar Pagamento");
-        if (!os.canGoTo(OrdemDeServico.STATUS.ENCERRADA)){
-        	jButton3.setEnabled(false);       	
-        }
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -113,9 +124,6 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton4.setText("Cancelar Ordem De Servico");
-        if (!os.canGoTo(OrdemDeServico.STATUS.CANCELADA)){
-        	jButton4.setEnabled(false);       	
-        }
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -129,6 +137,8 @@ public class DetalhesOS extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        
+        disableButtons();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,6 +191,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	try {
 			Main.ordemdeservicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para APROVADA");
+			disableButtons();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -192,6 +203,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	try {
 			Main.ordemdeservicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CONCLUIDA");
+			disableButtons();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -203,6 +215,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	try {
 			Main.ordemdeservicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para ENCERRADA");
+			disableButtons();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -214,6 +227,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	try {
 			Main.ordemdeservicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CANCELADA");
+			disableButtons();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

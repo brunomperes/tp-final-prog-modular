@@ -23,7 +23,7 @@ public class Main {
 	public static ClienteDao clienteDao;
 	public static FuncionarioDao funcionarioDao;
 	public static OrdemDeServicoDao ordemdeservicoDao;
-	public static ItemOrcamentoDao itemorcamentoDao;
+	public static ItemOrcamentoDao itemOrcamentoDao;
 	private static Cliente currentCliente;
 	private static Funcionario currentFuncionario;
 	private static OrdemDeServico currentOS;
@@ -38,7 +38,7 @@ public class Main {
 		clienteDao = new ClienteDao(connectionSource);
 		funcionarioDao = new FuncionarioDao(connectionSource);
 		ordemdeservicoDao = new OrdemDeServicoDao(connectionSource);
-		itemorcamentoDao = new ItemOrcamentoDao(connectionSource);
+		itemOrcamentoDao = new ItemOrcamentoDao(connectionSource);
 		
 		createDbTables();
 		
@@ -126,23 +126,25 @@ public class Main {
 		ordemdeservicoDao.create(os1);
 		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado",new Date());
 		ordemdeservicoDao.create(os2);
+		OrdemDeServico os3 = new OrdemDeServico(moises,"Bombeiro","Reparo da Caixa D`agua",new Date());
+		ordemdeservicoDao.create(os3);
 		
 		//Orcamento Sample Test <<MOISES>>
 		ItemOrcamento orcamentoOS1 = new ItemOrcamento (os1, 10,7,"Cano PVC",false);
-		itemorcamentoDao.create(orcamentoOS1);
+		itemOrcamentoDao.create(orcamentoOS1);
 		orcamentoOS1 = new ItemOrcamento (os1, 5,2,"Fita Teflon",false);
-		itemorcamentoDao.create(orcamentoOS1);
+		itemOrcamentoDao.create(orcamentoOS1);
 		orcamentoOS1 = new ItemOrcamento (os1, 10,4,"Mao de obra (R$/Hora)",false);
-		itemorcamentoDao.create(orcamentoOS1);
+		itemOrcamentoDao.create(orcamentoOS1);
 		
 		ItemOrcamento orcamentoOS2 = new ItemOrcamento (os2, 30,2,"Telhas",false);
-		itemorcamentoDao.create(orcamentoOS2);
+		itemOrcamentoDao.create(orcamentoOS2);
 		orcamentoOS2 = new ItemOrcamento (os2, 10,1,"Areia",false);
-		itemorcamentoDao.create(orcamentoOS2);
+		itemOrcamentoDao.create(orcamentoOS2);
 		orcamentoOS2 = new ItemOrcamento (os2, 20,1,"Cimento",false);
-		itemorcamentoDao.create(orcamentoOS2);
+		itemOrcamentoDao.create(orcamentoOS2);
 		orcamentoOS2 = new ItemOrcamento (os2, 20,5,"Mao de obra (R$/Hora",false);
-		itemorcamentoDao.create(orcamentoOS2);
+		itemOrcamentoDao.create(orcamentoOS2);
 		//========================================
 		//END - SAMPLE DATA FOR TEST
 		//=======================================

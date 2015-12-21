@@ -40,5 +40,9 @@ public class OrdemDeServicoDao  extends BaseDaoImpl<OrdemDeServico, Integer> imp
 		}
 		return lista;
 	}
+	
+	public void invalidateExpiredOrcamentos(){
+		//TODO
+	}
 
 }

@@ -141,7 +141,7 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     	String especialidade = (String)jComboBox1.getSelectedItem();
-    	OrdemDeServico os = new OrdemDeServico(Main.getCurrentCliente(), null, especialidade, jTextArea1.getText(), new Date());
+    	OrdemDeServico os = new OrdemDeServico(Main.getCurrentCliente(), especialidade, jTextArea1.getText(), new Date());
         try {
 			Main.ordemdeservicoDao.create(os);
 			JOptionPane.showMessageDialog(null, "Ordem de Servico salva!");

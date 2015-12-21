@@ -63,9 +63,6 @@ public class OrdemDeServico {
 		if (this.status == STATUS.AGUARDANDO_ORCAMENTO.ordinal() && destinationStatus == STATUS.AGUARDANDO_APROVACAO){
 			return true;
 		}
-		if (this.status == STATUS.AGUARDANDO_APROVACAO.ordinal() && destinationStatus == STATUS.AGUARDANDO_APROVACAO){
-			return true;
-		}
 		if (this.status == STATUS.AGUARDANDO_APROVACAO.ordinal() && destinationStatus == STATUS.CANCELADA){
 			return true;
 		}

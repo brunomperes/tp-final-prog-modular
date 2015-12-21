@@ -6,11 +6,15 @@
 package ui;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import runner.Main;
 import entities.ItemOrcamento;
 import entities.OrdemDeServico;
+import entities.OrdemDeServico.STATUS;
 
 /**
  *
@@ -76,15 +80,47 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton1.setText("Aprovar Orcamento");
+        if (!os.canGoTo(OrdemDeServico.STATUS.APROVADA)){
+        	jButton1.setEnabled(false);       	
+        }
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton2.setText("Aprovar Servico");
+        if (!os.canGoTo(OrdemDeServico.STATUS.CONCLUIDA)){
+        	jButton2.setEnabled(false);       	
+        }
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton3.setText("Efetuar Pagamento");
+        if (!os.canGoTo(OrdemDeServico.STATUS.ENCERRADA)){
+        	jButton3.setEnabled(false);       	
+        }
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton4.setText("Cancelar Ordem De Servico");
+        if (!os.canGoTo(OrdemDeServico.STATUS.CANCELADA)){
+        	jButton4.setEnabled(false);       	
+        }
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton5.setText("VOLTAR");
@@ -137,6 +173,51 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    	// Aprovar orcamento
+    	os.setStatus(OrdemDeServico.STATUS.APROVADA.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para APROVADA");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    	// Aprovar servico
+    	os.setStatus(OrdemDeServico.STATUS.CONCLUIDA.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CONCLUIDA");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    	// Realizar pagamento
+    	os.setStatus(OrdemDeServico.STATUS.ENCERRADA.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para ENCERRADA");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // Cancelar OS
+    	os.setStatus(OrdemDeServico.STATUS.CANCELADA.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CANCELADA");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.setVisible(false);

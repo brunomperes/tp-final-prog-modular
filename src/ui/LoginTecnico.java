@@ -136,7 +136,7 @@ public class LoginTecnico extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null, "Matricula NAO encontrada");
         } else {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
-        	Main.login(f.getId());
+        	Main.loginFuncionario(f);
         	this.setVisible(false);
             new MenuTecnico().setVisible(true);
         }

@@ -24,7 +24,8 @@ public class Main {
 	public static FuncionarioDao funcionarioDao;
 	public static OrdemDeServicoDao ordemdeservicoDao;
 	public static ItemOrcamentoDao itemorcamentoDao;
-	private static Integer loggedInUserId;
+	private static Cliente currentCliente;
+	private static Funcionario currentFuncionario;
         
 	public static void main(String[] args) throws SQLException {
 		
@@ -47,12 +48,25 @@ public class Main {
         
 	}
 	
-	public static void login(int userId){
-		Main.loggedInUserId = userId;
+	public static void loginCliente(Cliente currentCliente){
+		Main.currentCliente = currentCliente;
+	}
+	
+	public static void loginFuncionario(Funcionario currentFuncionario){
+		Main.currentFuncionario = currentFuncionario;
 	}
 	
 	public static void logout(){
-		Main.loggedInUserId = null;
+		Main.currentCliente = null;
+		Main.currentFuncionario = null;
+	}
+	
+	public static Cliente getCurrentCliente(){
+		return currentCliente;
+	}
+	
+	public static Funcionario getCurrentFuncionario(){
+		return currentFuncionario;
 	}
 	
 	public static void closeProgram(){

@@ -7,12 +7,12 @@ package ui;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-import entities.Funcionario;
-import entities.OrdemDeServico;
 import runner.Main;
+import entities.OrdemDeServico;
 
 /**
  *
@@ -145,10 +145,10 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    	OrdemDeServico os = new OrdemDeServico();
+    	OrdemDeServico os = new OrdemDeServico(null, null, jComboBox1.getName(), jTextArea1.getText(), new Date());
         try {
 			Main.ordemdeservicoDao.create(os);
-			//JOptionPane.showMessageDialog(null, "Cadastro criado, sua matricula: " + f.getId());
+			JOptionPane.showMessageDialog(null, "Ordem de Servico salva!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

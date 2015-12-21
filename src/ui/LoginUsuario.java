@@ -130,17 +130,17 @@ public class LoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    	Cliente f = null;
+    	Cliente c = null;
     	try {
-    		f = Main.clienteDao.findByMatricula(Integer.parseInt(jTextField1.getText()));
+    		c = Main.clienteDao.findByMatricula(Integer.parseInt(jTextField1.getText()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        if (f == null){
+        if (c == null){
         	JOptionPane.showMessageDialog(null, "Matricula NAO encontrada");
         } else {
-        	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
-        	Main.login(f.getId());
+        	JOptionPane.showMessageDialog(null, "Bem vindo: " + c.getNome());
+        	Main.loginCliente(c);
         	new MenuUsuario().setVisible(true);
         }
         this.setVisible(false);

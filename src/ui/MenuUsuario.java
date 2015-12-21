@@ -6,17 +6,24 @@
 package ui;
 
 import java.awt.Color;
+import java.util.List;
+
+import runner.Main;
+import entities.OrdemDeServico;
 
 /**
  *
  * @author ThiagoLucas
  */
 public class MenuUsuario extends javax.swing.JFrame {
+	
+	private List<OrdemDeServico> listaOS;
 
     /**
      * Creates new form MenuUsuario
      */
     public MenuUsuario() {
+    	listaOS = Main.ordemdeservicoDao.findUserAndOpenOrdemDeServico(Main.getCurrentCliente().getId());
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
@@ -57,27 +64,19 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Ordens De Servicos");
+        
+        Object listaOSMatrix[][] = new Object[10][4];
+        
+        for (int i = 0; i < listaOS.size(); i++) {
+        	listaOSMatrix[i][0] = listaOS.get(i).getFuncionario().getNome();
+        	listaOSMatrix[i][1] = listaOS.get(i).getDescricao();
+        	listaOSMatrix[i][2] = listaOS.get(i).getStatus();
+        	listaOSMatrix[i][3] = listaOS.get(i).getValidade();
+		}
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+        		listaOSMatrix,
             new String [] {
                 "Funcionario", "Descrição", "Status", "Validade"
             }

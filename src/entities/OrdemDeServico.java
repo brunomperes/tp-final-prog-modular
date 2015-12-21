@@ -12,14 +12,14 @@ public class OrdemDeServico {
 	
 	//	Lista de status
 	public enum STATUS {
-		CADASTRADA, AGUARDANDO_ORCAMENTO, AGUARDANDO_APROVACAO, APROVADA, EM_ANDAMENTO, CONCLUIDA, EM_COBRANCA, ENCERRADA, CANCELADA
+		_UNUSED_, CADASTRADA, AGUARDANDO_ORCAMENTO, AGUARDANDO_APROVACAO, APROVADA, EM_ANDAMENTO, CONCLUIDA, EM_COBRANCA, ENCERRADA, CANCELADA
 	}
 
 	@DatabaseField(generatedId = true)
 	private int id;
-	@DatabaseField(foreign = true)
+	@DatabaseField(foreign = true, foreignAutoRefresh = true)
 	private Cliente cliente;
-	@DatabaseField(foreign = true)
+	@DatabaseField(foreign = true, foreignAutoRefresh = true)
 	private Funcionario funcionario;
 	@DatabaseField
 	private String especialidade;
@@ -33,11 +33,20 @@ public class OrdemDeServico {
 	public OrdemDeServico(){
 		
 	}
-
+	
 	public OrdemDeServico(Cliente cliente, Funcionario funcionario,
 			String especialidade, String descricao, Date validade) {
 		this.cliente = cliente;
 		this.funcionario = funcionario;
+		this.especialidade = especialidade;
+		this.descricao = descricao;
+		this.status = STATUS.AGUARDANDO_ORCAMENTO.ordinal();
+		this.validade = validade;
+	}
+
+	public OrdemDeServico(Cliente cliente,
+			String especialidade, String descricao, Date validade) {
+		this.cliente = cliente;
 		this.especialidade = especialidade;
 		this.descricao = descricao;
 		this.status = STATUS.CADASTRADA.ordinal();
@@ -91,6 +100,9 @@ public class OrdemDeServico {
 	}
 
 	public void setFuncionario(Funcionario funcionario) {
+		if (this.status == STATUS.CADASTRADA.ordinal()){
+			this.status = STATUS.AGUARDANDO_ORCAMENTO.ordinal();
+		}
 		this.funcionario = funcionario;
 	}
 

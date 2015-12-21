@@ -24,7 +24,7 @@ public class MenuTecnico extends javax.swing.JFrame {
      * Creates new form MenuTecnico
      */
     public MenuTecnico() {
-//    	listaOS = Main.ordemdeservicoDao.findFuncionarioOrdemDeServico(Main.getCurrentFuncionario().getId());
+    	listaOS = Main.ordemdeservicoDao.findFuncionarioOrdemDeServico(Main.getCurrentFuncionario().getId());
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
@@ -63,14 +63,19 @@ public class MenuTecnico extends javax.swing.JFrame {
         jLabel1.setText("Ordens de Servico");
         
         jButton0.setText("Deslogar");
+        jButton0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton0ActionPerformed(evt);
+            }
+        });
         
         Object listaOSMatrix[][] = new Object[10][4];
         
-//        for (int i = 0; i < listaOS.size(); i++) {
-//        	listaOSMatrix[i][0] = listaOS.get(i).getCliente().getNome();
-//        	listaOSMatrix[i][1] = listaOS.get(i).getEspecialidade();
-//        	listaOSMatrix[i][2] = listaOS.get(i).getDescricao();
-//		}
+        for (int i = 0; i < listaOS.size(); i++) {
+        	listaOSMatrix[i][0] = listaOS.get(i).getCliente().getNome();
+        	listaOSMatrix[i][1] = listaOS.get(i).getEspecialidade();
+        	listaOSMatrix[i][2] = listaOS.get(i).getDescricao();
+		}
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -250,6 +255,11 @@ public class MenuTecnico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {
+    	this.setVisible(false);
+        new MenuInicial().setVisible(true);
+    }
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     	try {

@@ -10,7 +10,7 @@ public class ItemOrcamento {
 	
 	@DatabaseField(generatedId = true)
 	private int id;
-	@DatabaseField(foreign = true)
+	@DatabaseField(foreign = true, foreignAutoRefresh = true)
 	private OrdemDeServico ordemDeServico;
 	@DatabaseField
 	private double valorUnitario;

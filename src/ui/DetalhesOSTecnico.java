@@ -92,7 +92,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton3.setText("Iniciar Servico");
         if (!os.canGoTo(OrdemDeServico.STATUS.EM_ANDAMENTO)){
-        	jButton2.setEnabled(false);
+        	jButton3.setEnabled(false);
         }
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +103,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton4.setText("Concluir Servico");
         if (!os.canGoTo(OrdemDeServico.STATUS.CONCLUIDA)){
-        	jButton2.setEnabled(false);
+        	jButton4.setEnabled(false);
         }
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +114,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton5.setText("Elaborar Orcamento");
         if (!os.canGoTo(OrdemDeServico.STATUS.AGUARDANDO_ORCAMENTO)){
-        	jButton2.setEnabled(false);
+        	jButton5.setEnabled(false);
         }
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +125,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton6.setText("Emitir Fatura");
         if (!os.canGoTo(OrdemDeServico.STATUS.EM_COBRANCA)){
-        	jButton2.setEnabled(false);
+        	jButton6.setEnabled(false);
         }
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

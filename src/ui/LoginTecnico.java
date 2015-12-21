@@ -126,9 +126,6 @@ public class LoginTecnico extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        this.setVisible(false);
-        new MenuTecnico().setVisible(true);
-        
         Funcionario f = null;
     	try {
     		f = Main.funcionarioDao.findByMatricula(Integer.parseInt(jTextField1.getText()));
@@ -139,7 +136,8 @@ public class LoginTecnico extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null, "Matricula NAO encontrada");
         } else {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
-        	//TODO entrar menu técnico
+        	this.setVisible(false);
+            new MenuTecnico().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     

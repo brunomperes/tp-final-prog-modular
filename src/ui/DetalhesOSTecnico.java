@@ -223,7 +223,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     	os.setStatus(OrdemDeServico.STATUS.AGUARDANDO_ORCAMENTO.ordinal());
     	os.setFuncionario(Main.getCurrentFuncionario());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alocada para "+ Main.getCurrentFuncionario().getNome());
 			disableButtons();
 		} catch (SQLException e) {
@@ -239,7 +239,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     	}
     	os.setStatus(OrdemDeServico.STATUS.EM_ANDAMENTO.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para EM ANDAMENTO");
 			disableButtons();
 		} catch (SQLException e) {
@@ -260,7 +260,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     	}
     	os.setStatus(OrdemDeServico.STATUS.EM_COBRANCA.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			List<ItemOrcamento> listaItems = Main.itemOrcamentoDao.findAllItemsFromOS(os);
 			double valorImposto = OrdemDeServico.getValorImpostoNoOrcamento(listaItems);
 			double total = OrdemDeServico.getValorTotalOrcamento(listaItems);
@@ -279,7 +279,7 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     	}
     	os.setStatus(OrdemDeServico.STATUS.CONCLUIDA.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CONCLUIDA");
 			disableButtons();
 		} catch (SQLException e) {

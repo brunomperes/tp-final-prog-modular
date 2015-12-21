@@ -23,7 +23,7 @@ public class Main {
 	public static JdbcConnectionSource connectionSource;
 	public static ClienteDao clienteDao;
 	public static FuncionarioDao funcionarioDao;
-	public static OrdemDeServicoDao ordemdeservicoDao;
+	public static OrdemDeServicoDao ordemDeServicoDao;
 	public static ItemOrcamentoDao itemOrcamentoDao;
 	private static Cliente currentCliente;
 	private static Funcionario currentFuncionario;
@@ -44,7 +44,7 @@ public class Main {
 
 		clienteDao = new ClienteDao(connectionSource);
 		funcionarioDao = new FuncionarioDao(connectionSource);
-		ordemdeservicoDao = new OrdemDeServicoDao(connectionSource);
+		ordemDeServicoDao = new OrdemDeServicoDao(connectionSource);
 		itemOrcamentoDao = new ItemOrcamentoDao(connectionSource);
 		
 		createDbTables();
@@ -134,11 +134,11 @@ public class Main {
 		Calendar cal = Calendar.getInstance(); 
 		cal.add(Calendar.MONTH, 1);
 		OrdemDeServico os1 = new OrdemDeServico(moises,jorge,"Encanador","Reparo da Caixa D`agua",cal.getTime());
-		ordemdeservicoDao.create(os1);
+		ordemDeServicoDao.create(os1);
 		OrdemDeServico os2 = new OrdemDeServico(lais,joao,"Pedreiro","Reparo do Telhado", cal.getTime());
-		ordemdeservicoDao.create(os2);
+		ordemDeServicoDao.create(os2);
 		OrdemDeServico os3 = new OrdemDeServico(moises,"Bombeiro","Reparo da Caixa D`agua",cal.getTime());
-		ordemdeservicoDao.create(os3);
+		ordemDeServicoDao.create(os3);
 		
 		//Orcamento Sample Test <<MOISES>>
 		ItemOrcamento orcamentoOS1 = new ItemOrcamento (os1, 10,7,"Cano PVC",false);

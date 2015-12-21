@@ -189,7 +189,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	// Aprovar orcamento
     	os.setStatus(OrdemDeServico.STATUS.APROVADA.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para APROVADA");
 			disableButtons();
 		} catch (SQLException e) {
@@ -201,7 +201,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	// Aprovar servico
     	os.setStatus(OrdemDeServico.STATUS.CONCLUIDA.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CONCLUIDA");
 			disableButtons();
 		} catch (SQLException e) {
@@ -213,7 +213,7 @@ public class DetalhesOS extends javax.swing.JFrame {
     	// Realizar pagamento
     	os.setStatus(OrdemDeServico.STATUS.ENCERRADA.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para ENCERRADA");
 			disableButtons();
 		} catch (SQLException e) {
@@ -225,7 +225,7 @@ public class DetalhesOS extends javax.swing.JFrame {
         // Cancelar OS
     	os.setStatus(OrdemDeServico.STATUS.CANCELADA.ordinal());
     	try {
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CANCELADA");
 			disableButtons();
 		} catch (SQLException e) {

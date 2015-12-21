@@ -24,7 +24,7 @@ public class MenuInicial extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
         try {
-			Main.ordemdeservicoDao.invalidateExpiredOrcamentos();
+			Main.ordemDeServicoDao.invalidateExpiredOrcamentos();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

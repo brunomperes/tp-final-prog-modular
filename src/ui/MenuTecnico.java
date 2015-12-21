@@ -24,7 +24,7 @@ public class MenuTecnico extends javax.swing.JFrame {
      * Creates new form MenuTecnico
      */
     public MenuTecnico() {
-    	listaOS = Main.ordemdeservicoDao.findFuncionarioOrdemDeServico(Main.getCurrentFuncionario().getId());
+    	listaOS = Main.ordemDeServicoDao.findFuncionarioOrdemDeServico(Main.getCurrentFuncionario().getId());
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);

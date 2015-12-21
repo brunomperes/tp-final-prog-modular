@@ -187,7 +187,7 @@ public class Orcamento extends javax.swing.JFrame {
     	try {
     		Main.itemOrcamentoDao.createOrUpdateItems(listaItems);
     		os.setStatus(STATUS.AGUARDANDO_APROVACAO.ordinal());
-			Main.ordemdeservicoDao.update(os);
+			Main.ordemDeServicoDao.update(os);
 			JOptionPane.showMessageDialog(null, "O orcamento foi enviado para aprovacao do cliente");
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar");

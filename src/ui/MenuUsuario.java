@@ -23,7 +23,7 @@ public class MenuUsuario extends javax.swing.JFrame {
      * Creates new form MenuUsuario
      */
     public MenuUsuario() {
-    	listaOS = Main.ordemdeservicoDao.findClienteOrdemDeServico(Main.getCurrentCliente().getId());
+    	listaOS = Main.ordemDeServicoDao.findClienteOrdemDeServico(Main.getCurrentCliente().getId());
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);

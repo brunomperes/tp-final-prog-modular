@@ -143,7 +143,7 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
     	String especialidade = (String)jComboBox1.getSelectedItem();
     	OrdemDeServico os = new OrdemDeServico(Main.getCurrentCliente(), especialidade, jTextArea1.getText(), new Date());
         try {
-			Main.ordemdeservicoDao.create(os);
+			Main.ordemDeServicoDao.create(os);
 			JOptionPane.showMessageDialog(null, "Ordem de Servico salva!");
 		} catch (SQLException e) {
 			e.printStackTrace();

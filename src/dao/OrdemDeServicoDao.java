@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
@@ -13,5 +14,15 @@ public class OrdemDeServicoDao  extends BaseDaoImpl<OrdemDeServico, Integer> imp
       throws SQLException {
         super(connectionSource, OrdemDeServico.class);
     }
+	
+	public List<OrdemDeServico> findUserAndOpenOrdemDeServico(int userId){
+		try {
+			List<OrdemDeServico> lista = queryBuilder().where().eq("funcionario_id", userId).or().isNull("funcionario_id").query();
+			return lista;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

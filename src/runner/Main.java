@@ -24,6 +24,7 @@ public class Main {
 	public static FuncionarioDao funcionarioDao;
 	public static OrdemDeServicoDao ordemdeservicoDao;
 	public static ItemOrcamentoDao itemorcamentoDao;
+	private static Integer loggedInUserId;
         
 	public static void main(String[] args) throws SQLException {
 		
@@ -44,6 +45,14 @@ public class Main {
                 
         new MenuInicial().setVisible(true);
         
+	}
+	
+	public static void login(int userId){
+		Main.loggedInUserId = userId;
+	}
+	
+	public static void logout(){
+		Main.loggedInUserId = null;
 	}
 	
 	public static void closeProgram(){

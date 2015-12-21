@@ -140,6 +140,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null, "Matricula NAO encontrada");
         } else {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + f.getNome());
+        	Main.login(f.getId());
         	new MenuUsuario().setVisible(true);
         }
         this.setVisible(false);

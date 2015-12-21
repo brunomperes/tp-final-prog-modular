@@ -5,5 +5,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/ormlite-core-4.48.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ormlite-jdbc-4.48.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/h2-1.4.190.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/sqlite-jdbc-3.8.11.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

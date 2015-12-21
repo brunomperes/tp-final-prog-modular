@@ -28,13 +28,19 @@ public class Main {
 	private static Cliente currentCliente;
 	private static Funcionario currentFuncionario;
 	private static OrdemDeServico currentOS;
+	
+	private static final boolean USE_MEMORY_DATABASE = false;
+	private static final boolean CREATE_MOCK_DATA_IF_EMPTY_DB = true;
 
 	public static void main(String[] args) throws SQLException {
 		
-		// h2 by default but change to match your database
-		String databaseUrl = "jdbc:h2:mem:account";
-		connectionSource = new JdbcConnectionSource(
-				databaseUrl);
+		String databaseUrl;
+		if (USE_MEMORY_DATABASE){
+			databaseUrl = "jdbc:h2:mem:account";
+		} else {
+			databaseUrl = "jdbc:sqlite:mydatabase.db";
+		}
+		connectionSource = new JdbcConnectionSource(databaseUrl);
 
 		clienteDao = new ClienteDao(connectionSource);
 		funcionarioDao = new FuncionarioDao(connectionSource);
@@ -43,8 +49,11 @@ public class Main {
 		
 		createDbTables();
 		
-		// instantiate the dao with the connection source
-		createMockData();
+		if (CREATE_MOCK_DATA_IF_EMPTY_DB){
+			if (clienteDao.countOf() == 0){
+				createMockData();
+			}
+		}
                 
         new MenuInicial().setVisible(true);
         
@@ -91,11 +100,10 @@ public class Main {
 	
 	public static void createDbTables() throws SQLException{
 		
-		TableUtils.createTable(connectionSource, Cliente.class);
-		TableUtils.createTable(connectionSource, Funcionario.class);
-		TableUtils.createTable(connectionSource, ItemOrcamento.class);
-		TableUtils.createTable(connectionSource, OrdemDeServico.class);
-		
+		TableUtils.createTableIfNotExists(connectionSource, Cliente.class);
+		TableUtils.createTableIfNotExists(connectionSource, Funcionario.class);
+		TableUtils.createTableIfNotExists(connectionSource, ItemOrcamento.class);
+		TableUtils.createTableIfNotExists(connectionSource, OrdemDeServico.class);
 	}
 	
 	public static void createMockData() throws SQLException{

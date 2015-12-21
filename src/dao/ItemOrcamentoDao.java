@@ -11,7 +11,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import entities.ItemOrcamento;
 import entities.OrdemDeServico;
 
-public class ItemOrcamentoDao extends BaseDaoImpl<ItemOrcamento, Integer> implements BasicOperationsDao{
+public class ItemOrcamentoDao extends BaseDaoImpl<ItemOrcamento, Integer>{
 	
 	public ItemOrcamentoDao(ConnectionSource connectionSource)
       throws SQLException {

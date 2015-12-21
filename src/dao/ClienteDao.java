@@ -7,7 +7,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 import entities.Cliente;
 
-public class ClienteDao extends BaseDaoImpl<Cliente, Integer> implements BasicOperationsDao{
+public class ClienteDao extends BaseDaoImpl<Cliente, Integer>{
 	
 	public ClienteDao(ConnectionSource connectionSource)
       throws SQLException {

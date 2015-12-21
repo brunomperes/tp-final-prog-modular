@@ -7,7 +7,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 import entities.Funcionario;
 
-public class FuncionarioDao  extends BaseDaoImpl<Funcionario, Integer> implements BasicOperationsDao{
+public class FuncionarioDao  extends BaseDaoImpl<Funcionario, Integer>{
 	
 	public FuncionarioDao(ConnectionSource connectionSource)
       throws SQLException {

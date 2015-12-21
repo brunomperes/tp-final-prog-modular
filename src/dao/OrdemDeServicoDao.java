@@ -11,7 +11,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 import entities.OrdemDeServico;
 
-public class OrdemDeServicoDao  extends BaseDaoImpl<OrdemDeServico, Integer> implements BasicOperationsDao{
+public class OrdemDeServicoDao  extends BaseDaoImpl<OrdemDeServico, Integer> {
 	
 	public OrdemDeServicoDao(ConnectionSource connectionSource)
       throws SQLException {

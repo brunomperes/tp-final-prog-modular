@@ -26,7 +26,8 @@ public class Main {
 	public static ItemOrcamentoDao itemorcamentoDao;
 	private static Cliente currentCliente;
 	private static Funcionario currentFuncionario;
-        
+	private static OrdemDeServico currentOS;
+
 	public static void main(String[] args) throws SQLException {
 		
 		// h2 by default but change to match your database
@@ -59,6 +60,14 @@ public class Main {
 	public static void logout(){
 		Main.currentCliente = null;
 		Main.currentFuncionario = null;
+	}
+	
+	public static OrdemDeServico getCurrentOS() {
+		return currentOS;
+	}
+
+	public static void setCurrentOS(OrdemDeServico currentOS) {
+		Main.currentOS = currentOS;
 	}
 	
 	public static Cliente getCurrentCliente(){

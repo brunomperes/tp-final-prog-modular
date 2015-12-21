@@ -140,12 +140,7 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        new MenuUsuario().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    	OrdemDeServico os = new OrdemDeServico(null, null, jComboBox1.getName(), jTextArea1.getText(), new Date());
+    	OrdemDeServico os = new OrdemDeServico(Main.getCurrentCliente(), null, jComboBox1.getName(), jTextArea1.getText(), new Date());
         try {
 			Main.ordemdeservicoDao.create(os);
 			JOptionPane.showMessageDialog(null, "Ordem de Servico salva!");
@@ -153,7 +148,7 @@ public class CadastrarNovaOS extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
         this.setVisible(false);
-        new LoginTecnico().setVisible(true);
+        new MenuUsuario().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

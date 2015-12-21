@@ -43,6 +43,40 @@ public class OrdemDeServico {
 		this.status = STATUS.CADASTRADA.ordinal();
 		this.validade = validade;
 	}
+	
+	public boolean canGoTo(STATUS destinationStatus){
+		if (this.status == STATUS.CADASTRADA.ordinal() && destinationStatus == STATUS.AGUARDANDO_ORCAMENTO){
+			return true;
+		}
+		if (this.status == STATUS.CADASTRADA.ordinal() && destinationStatus == STATUS.CANCELADA){
+			return true;
+		}
+		if (this.status == STATUS.AGUARDANDO_ORCAMENTO.ordinal() && destinationStatus == STATUS.AGUARDANDO_APROVACAO){
+			return true;
+		}
+		if (this.status == STATUS.AGUARDANDO_APROVACAO.ordinal() && destinationStatus == STATUS.AGUARDANDO_APROVACAO){
+			return true;
+		}
+		if (this.status == STATUS.AGUARDANDO_APROVACAO.ordinal() && destinationStatus == STATUS.CANCELADA){
+			return true;
+		}
+		if (this.status == STATUS.AGUARDANDO_APROVACAO.ordinal() && destinationStatus == STATUS.APROVADA){
+			return true;
+		}
+		if (this.status == STATUS.APROVADA.ordinal() && destinationStatus == STATUS.EM_ANDAMENTO){
+			return true;
+		}
+		if (this.status == STATUS.EM_ANDAMENTO.ordinal() && destinationStatus == STATUS.CONCLUIDA){
+			return true;
+		}
+		if (this.status == STATUS.CONCLUIDA.ordinal() && destinationStatus == STATUS.EM_COBRANCA){
+			return true;
+		}
+		if (this.status == STATUS.EM_COBRANCA.ordinal() && destinationStatus == STATUS.ENCERRADA){
+			return true;
+		}
+		return false;
+	}
 
 	public Cliente getCliente() {
 		return cliente;

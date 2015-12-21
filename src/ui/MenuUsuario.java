@@ -23,7 +23,7 @@ public class MenuUsuario extends javax.swing.JFrame {
      * Creates new form MenuUsuario
      */
     public MenuUsuario() {
-    	listaOS = Main.ordemdeservicoDao.findUserAndOpenOrdemDeServico(Main.getCurrentCliente().getId());
+    	listaOS = Main.ordemdeservicoDao.findClienteOrdemDeServico(Main.getCurrentCliente().getId());
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
@@ -68,7 +68,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         Object listaOSMatrix[][] = new Object[10][4];
         
         for (int i = 0; i < listaOS.size(); i++) {
-        	listaOSMatrix[i][0] = listaOS.get(i).getFuncionario().getNome();
+        	if (listaOS.get(i).getFuncionario() != null){
+        		listaOSMatrix[i][0] = listaOS.get(i).getFuncionario().getNome();
+        	}
         	listaOSMatrix[i][1] = listaOS.get(i).getDescricao();
         	listaOSMatrix[i][2] = listaOS.get(i).getStatus();
         	listaOSMatrix[i][3] = listaOS.get(i).getValidade();
@@ -327,23 +329,43 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       this.setVisible(false);
-       new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(0));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(1));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(2));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(3));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -352,58 +374,113 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(4));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(5));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(6));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(7));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-       this.setVisible(false);
-       new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(8));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(9));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(10));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(11));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(12));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(13));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        this.setVisible(false);
-        new DetalhesOS().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(14));
+    		this.setVisible(false);
+    		new DetalhesOS().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton21ActionPerformed
 
     /**

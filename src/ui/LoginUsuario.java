@@ -142,8 +142,8 @@ public class LoginUsuario extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null, "Bem vindo: " + c.getNome());
         	Main.loginCliente(c);
         	new MenuUsuario().setVisible(true);
+        	this.setVisible(false);
         }
-        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -11,7 +11,7 @@ public class ItemOrcamento {
 	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField(foreign = true)
-	private OrdemDeServico ordemServico;
+	private OrdemDeServico ordemDeServico;
 	@DatabaseField
 	private double valorUnitario;
 	@DatabaseField
@@ -28,19 +28,19 @@ public class ItemOrcamento {
 	public ItemOrcamento(OrdemDeServico ordemServico, double valorUnitario,
 			double quantidade, String descricao, boolean geraImposto) {
 		super();
-		this.ordemServico = ordemServico;
+		this.ordemDeServico = ordemServico;
 		this.valorUnitario = valorUnitario;
 		this.quantidade = quantidade;
 		this.descricao = descricao;
 		this.geraImposto = geraImposto;
 	}
 
-	public OrdemDeServico getOrdemServico() {
-		return ordemServico;
+	public OrdemDeServico getOrdemDeServico() {
+		return ordemDeServico;
 	}
 
-	public void setOrdemServico(OrdemDeServico ordemServico) {
-		this.ordemServico = ordemServico;
+	public void setOrdemDeServico(OrdemDeServico ordemServico) {
+		this.ordemDeServico = ordemServico;
 	}
 
 	public double getValorUnitario() {
@@ -77,5 +77,9 @@ public class ItemOrcamento {
 
 	public int getId() {
 		return id;
+	}
+
+	public double getValorTotal() {
+		return quantidade * valorUnitario;
 	}
 }

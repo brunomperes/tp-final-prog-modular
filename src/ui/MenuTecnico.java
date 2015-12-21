@@ -6,17 +6,25 @@
 package ui;
 
 import java.awt.Color;
+import java.util.List;
+
+import runner.Main;
+
+import entities.OrdemDeServico;
 
 /**
  *
  * @author ThiagoLucas
  */
 public class MenuTecnico extends javax.swing.JFrame {
+	
+	private List<OrdemDeServico> listaOS;
 
     /**
      * Creates new form MenuTecnico
      */
     public MenuTecnico() {
+//    	listaOS = Main.ordemdeservicoDao.findFuncionarioOrdemDeServico(Main.getCurrentFuncionario().getId());
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
@@ -34,6 +42,7 @@ public class MenuTecnico extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton0 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -52,24 +61,20 @@ public class MenuTecnico extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Ordens de Servico");
+        
+        jButton0.setText("Deslogar");
+        
+        Object listaOSMatrix[][] = new Object[10][4];
+        
+//        for (int i = 0; i < listaOS.size(); i++) {
+//        	listaOSMatrix[i][0] = listaOS.get(i).getCliente().getNome();
+//        	listaOSMatrix[i][1] = listaOS.get(i).getEspecialidade();
+//        	listaOSMatrix[i][2] = listaOS.get(i).getDescricao();
+//		}
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
+        		listaOSMatrix,
             new String [] {
                 "Cliente", "Tipo de Manutencao", "Descricao"
             }
@@ -199,7 +204,8 @@ public class MenuTecnico extends javax.swing.JFrame {
                             .addComponent(jButton6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(376, 376, 376)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1)
+                        .addComponent(jButton0)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,6 +214,7 @@ public class MenuTecnico extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jButton0)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -244,69 +251,134 @@ public class MenuTecnico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    	try {
+		    Main.setCurrentOS(listaOS.get(0));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(1));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(2));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(3));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(4));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(5));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(6));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(7));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(8));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(9));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(10));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(11));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        this.setVisible(false);
-        new DetalhesOSTecnico().setVisible(true);
+    	try {
+		    Main.setCurrentOS(listaOS.get(12));
+    		this.setVisible(false);
+            new DetalhesOSTecnico().setVisible(true);
+		} catch ( IndexOutOfBoundsException e ) {
+		    
+		}
     }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
@@ -345,6 +417,7 @@ public class MenuTecnico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;

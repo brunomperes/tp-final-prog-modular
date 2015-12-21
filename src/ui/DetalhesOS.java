@@ -6,17 +6,36 @@
 package ui;
 
 import java.awt.Color;
+import java.util.List;
+
+import runner.Main;
+import entities.ItemOrcamento;
+import entities.OrdemDeServico;
 
 /**
  *
  * @author ThiagoLucas
  */
 public class DetalhesOS extends javax.swing.JFrame {
+	
+	private OrdemDeServico os = Main.getCurrentOS();
+	private List<ItemOrcamento> listaItemsOrcamento;
+	Object listaItemsMatrix[][] = new Object[10][4];
 
     /**
      * Creates new form DetalhesOS
      */
     public DetalhesOS() {
+    	os = Main.getCurrentOS();
+    	listaItemsOrcamento = Main.itemorcamentoDao.findAllItemsFromOS(os);
+        
+        for (int i = 0; i < listaItemsOrcamento.size(); i++) {
+        	listaItemsMatrix[i][0] = listaItemsOrcamento.get(i).getDescricao();
+        	listaItemsMatrix[i][1] = listaItemsOrcamento.get(i).getValorUnitario();
+        	listaItemsMatrix[i][2] = listaItemsOrcamento.get(i).getQuantidade();
+        	listaItemsMatrix[i][3] = listaItemsOrcamento.get(i).getValorTotal();
+		}
+    	
         initComponents();
         this.getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
@@ -47,23 +66,7 @@ public class DetalhesOS extends javax.swing.JFrame {
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+        		listaItemsMatrix,
             new String [] {
                 "Descricao do Item", "Valor Unitário", "Quantidade", "Valor Total"
             }

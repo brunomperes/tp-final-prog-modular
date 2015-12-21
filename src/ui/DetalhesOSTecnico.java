@@ -6,12 +6,22 @@
 package ui;
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import runner.Main;
+import entities.ItemOrcamento;
+import entities.OrdemDeServico;
 
 /**
  *
  * @author ThiagoLucas
  */
 public class DetalhesOSTecnico extends javax.swing.JFrame {
+	
+	private OrdemDeServico os = Main.getCurrentOS();
 
     /**
      * Creates new form DetalhesOSTecnico
@@ -58,18 +68,21 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
 
         jLabel2.setText("CLIENTE");
 
-        jTextField1.setText("Nome Cliente");
+        jTextField1.setText(os.getCliente().getNome());
 
         jLabel3.setText("DESCRICAO:");
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("DESCRICAO DO CLIENTE");
+        jTextArea1.setText(os.getDescricao());
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton2.setText("Atribuir OS");
+        if (!os.canGoTo(OrdemDeServico.STATUS.AGUARDANDO_ORCAMENTO)){
+        	jButton2.setEnabled(false);
+        }
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -78,6 +91,9 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton3.setText("Iniciar Servico");
+        if (!os.canGoTo(OrdemDeServico.STATUS.EM_ANDAMENTO)){
+        	jButton2.setEnabled(false);
+        }
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -86,6 +102,9 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton4.setText("Concluir Servico");
+        if (!os.canGoTo(OrdemDeServico.STATUS.CONCLUIDA)){
+        	jButton2.setEnabled(false);
+        }
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -94,6 +113,9 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton5.setText("Elaborar Orcamento");
+        if (!os.canGoTo(OrdemDeServico.STATUS.AGUARDANDO_ORCAMENTO)){
+        	jButton2.setEnabled(false);
+        }
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -102,6 +124,9 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton6.setText("Emitir Fatura");
+        if (!os.canGoTo(OrdemDeServico.STATUS.EM_COBRANCA)){
+        	jButton2.setEnabled(false);
+        }
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -177,11 +202,34 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    	// Atribuir servico
+    	if (os.getStatus() != OrdemDeServico.STATUS.CADASTRADA.ordinal()){
+    		JOptionPane.showMessageDialog(null, "Acao nao permitida, status invalido");
+    		return;
+    	}
+    	os.setStatus(OrdemDeServico.STATUS.AGUARDANDO_ORCAMENTO.ordinal());
+    	os.setFuncionario(Main.getCurrentFuncionario());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alocada para "+ Main.getCurrentFuncionario().getNome());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        //Iniciar servico 
+    	if (os.getStatus() != OrdemDeServico.STATUS.APROVADA.ordinal()){
+    		JOptionPane.showMessageDialog(null, "Acao nao permitida, status invalido");
+    		return;
+    	}
+    	os.setStatus(OrdemDeServico.STATUS.EM_ANDAMENTO.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para EM ANDAMENTO");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -190,11 +238,33 @@ public class DetalhesOSTecnico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // Emitir fatura
+    	if (os.getStatus() != OrdemDeServico.STATUS.CONCLUIDA.ordinal()){
+    		JOptionPane.showMessageDialog(null, "Acao nao permitida, status invalido");
+    		return;
+    	}
+    	os.setStatus(OrdemDeServico.STATUS.EM_COBRANCA.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para EM COBRANCA");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    	//Concluir servico 
+    	if (os.getStatus() != OrdemDeServico.STATUS.EM_ANDAMENTO.ordinal()){
+    		JOptionPane.showMessageDialog(null, "Acao nao permitida, status invalido");
+    		return;
+    	}
+    	os.setStatus(OrdemDeServico.STATUS.CONCLUIDA.ordinal());
+    	try {
+			Main.ordemdeservicoDao.update(os);
+			JOptionPane.showMessageDialog(null, "Ordem de servico alterada para CONCLUIDA");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

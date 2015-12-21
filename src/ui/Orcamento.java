@@ -69,6 +69,11 @@ public class Orcamento extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jButton1.setText("Salvar Orçamento");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +143,11 @@ public class Orcamento extends javax.swing.JFrame {
                 new Orcamento().setVisible(true);
             }
         });
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.setVisible(false);
+        new MenuTecnico().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
